@@ -1,0 +1,52 @@
+with ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+with Ada.Numerics; 
+with Ada.Numerics.Discrete_Random; 
+
+--isWord checks if a body of text are characters
+  function isWord return Integer is 
+    ch : character;
+    exist: Integer;
+
+    begin 
+    put("enter setence: ");
+    loop 
+      get(ch);
+--checks if there is letters a-z and A-Z will return 1 as true
+      if ch in 'a' .. 'z' then 
+        exist := 1;
+      end if; 
+      if ch in 'A' .. 'Z' then 
+        exist := 1; 
+      end if;
+--checks if there are any characters that are numbers and will return 0 as flase. 
+      if ch in '0' .. '9' then 
+        exist := 0;
+      end if;
+
+--ends with period 
+     exit when ch = '.'; 
+    end loop; 
+    put( "exist: " & integer'image(exist)); 
+
+    return exist; 
+
+ end isWord;
+
+
+
+--procedure randomint() generate random integer between a and b
+procedure randomInt is
+   subtype number is Integer range 2 .. 10;
+   package randomNumber is new Ada.Numerics.Discrete_Random (number);
+   use randomNumber;
+   G : Generator;
+   D : number;
+begin
+-- Start the generator in a unique state in each run
+   Reset (G);
+--create random number
+      D := Random(G); 
+   put("number: " & integer'image(D));
+
+   
+end randomInt;

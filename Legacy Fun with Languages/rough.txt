@@ -1,0 +1,26 @@
+#!/user/bin/env python
+from math import *
+
+def main():
+    a = int(raw_input('what is a: '))
+    b = int(raw_input('what is b: '))
+
+    print(recursion(a,b))
+
+def recursion(a,b):
+    p = int(0)
+
+    if (a == 0):
+        p = 0
+    elif(a == 1):
+        p = b
+    elif((a>1) & ((a%2) == 0)):
+        p = recursion((a/2), (b*2))
+    
+    elif((a>1) &((a%2) == 1)):
+        p = (b + (recursion((a/2), (b*2))))
+    
+
+    return p 
+
+main() 
